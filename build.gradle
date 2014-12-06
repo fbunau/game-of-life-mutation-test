@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    id "info.solidsoft.pitest" version "1.1.1"
+}
+
+sourceCompatibility = 1.8
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+pitest {
+    targetClasses = ['com.javaadvent.mutation.*']
+    pitestVersion = "1.1.0"
+    threads = 4
+    outputFormats = ['XML', 'HTML']
+    excludedMethods = ['equals', 'hashCode']
+}
